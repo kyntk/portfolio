@@ -1,9 +1,11 @@
+import Button from '@mui/material/Button'
 import { Logo } from './logo'
 
 export function App() {
   return (
     <>
       <Logo />
+      <Button variant='contained'>Hello World</Button>
       <p>Hello Vite + Preact!</p>
       <p>
         <a
