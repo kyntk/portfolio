@@ -1,7 +1,11 @@
 import Button from '@mui/material/Button'
+import { getUserArticles } from './lib/qiita/api'
 import { Logo } from './logo'
 
 export function App() {
+  getUserArticles().then((response) => {
+    console.log('api', response)
+  })
   return (
     <>
       <Logo />
