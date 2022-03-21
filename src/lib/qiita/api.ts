@@ -47,9 +47,9 @@ export async function getUser() {
   return camelCase(body)
 }
 
-export async function getUserArticles() {
+export async function getUserPublicArticles() {
   const body = await api.get<Article[]>(
     '/authenticated_user/items?per_page=100'
   )
-  return camelCase(body, { deep: true })
+  return camelCase(body, { deep: true }).filter((article) => !article.private)
 }

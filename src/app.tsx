@@ -1,26 +1,32 @@
-import Button from '@mui/material/Button'
-import { getUserArticles } from './lib/qiita/api'
-import { Logo } from './logo'
+import { useEffect, useState } from 'preact/hooks'
+import { ArticleCard } from './components/ArticleCard'
+import { getUserPublicArticles } from './lib/qiita/api'
+
+type Article = {
+  title: string
+  tags: { name: string }[]
+  createdAt: string
+  url: string
+}[]
 
 export function App() {
-  getUserArticles().then((response) => {
-    console.log('api', response)
-  })
+  const [articles, setArticles] = useState<Article>([])
+  useEffect(() => {
+    getUserPublicArticles().then((response) => {
+      setArticles(response)
+    })
+  }, [])
+
   return (
     <>
-      <Logo />
-      <Button variant='contained'>Hello World</Button>
-      <p>Hello Vite + Preact!</p>
-      <p>
-        <a
-          class='link'
-          href='https://preactjs.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn Preact
-        </a>
-      </p>
+      {articles.map((article) => (
+        <ArticleCard
+          title={article.title}
+          tags={article.tags}
+          createdAt={article.createdAt}
+          url={article.url}
+        />
+      ))}
     </>
   )
 }
