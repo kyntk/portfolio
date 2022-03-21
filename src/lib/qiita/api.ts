@@ -43,13 +43,13 @@ interface Article {
 const api = new Qiita({ token: import.meta.env.VITE_QIITA_API_TOKEN as string })
 
 export async function getUser() {
-  return await api
-    .get<User>('/authenticated_user')
-    .then((body) => camelCase(body))
+  const body = await api.get<User>('/authenticated_user')
+  return camelCase(body)
 }
 
 export async function getUserArticles() {
-  return await api
-    .get<Article[]>('/authenticated_user/items?per_page=100')
-    .then((body) => camelCase(body, { deep: true }))
+  const body = await api.get<Article[]>(
+    '/authenticated_user/items?per_page=100'
+  )
+  return camelCase(body, { deep: true })
 }
