@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material'
 import { useEffect, useState } from 'preact/hooks'
 import { ArticleCard } from './components/ArticleCard'
 import { getUserPublicArticles } from './lib/qiita/api'
@@ -7,6 +8,7 @@ type Article = {
   tags: { name: string }[]
   createdAt: string
   url: string
+  id: string
 }[]
 
 export function App() {
@@ -18,15 +20,17 @@ export function App() {
   }, [])
 
   return (
-    <>
+    <Grid container spacing={2} justifyContent='center'>
       {articles.map((article) => (
-        <ArticleCard
-          title={article.title}
-          tags={article.tags}
-          createdAt={article.createdAt}
-          url={article.url}
-        />
+        <Grid item xs={12} sm={8} key={article.id}>
+          <ArticleCard
+            title={article.title}
+            tags={article.tags}
+            createdAt={article.createdAt}
+            url={article.url}
+          />
+        </Grid>
       ))}
-    </>
+    </Grid>
   )
 }

@@ -21,6 +21,7 @@ export class Qiita {
     return fetch(`${this.url}${this.apiVersion}${path}`, {
       method: 'GET',
       headers: this.headers,
+      cache: 'force-cache',
     }).then((response) => {
       if (response.ok) {
         return response.json()
