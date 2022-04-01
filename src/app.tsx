@@ -1,6 +1,7 @@
 import { Container, Grid } from '@mui/material'
 import { useEffect, useState } from 'preact/hooks'
 import { ArticleCard } from './components/ArticleCard'
+import { Profile } from './components/Profile'
 import { getUserPublicArticles } from './lib/qiita/api'
 
 type Article = {
@@ -21,6 +22,7 @@ export function App() {
 
   return (
     <Container maxWidth='md'>
+      <Profile />
       <Grid container spacing={2} maxWidth='100%'>
         {articles.map((article) => (
           <Grid item width='100%'>
