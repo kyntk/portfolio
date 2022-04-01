@@ -1,8 +1,8 @@
 import { ThemeProvider } from '@mui/material'
 import { render } from 'preact'
 import { App } from './app'
-import './index.css'
 import { theme } from './lib/mui/theme'
+import './style/index.css'
 
 render(
   <ThemeProvider theme={theme}>

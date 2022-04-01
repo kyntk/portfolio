@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 import { useEffect, useState } from 'preact/hooks'
 import { ArticleCard } from './components/ArticleCard'
 import { getUserPublicArticles } from './lib/qiita/api'
@@ -20,17 +20,20 @@ export function App() {
   }, [])
 
   return (
-    <Grid container spacing={2} justifyContent='center'>
-      {articles.map((article) => (
-        <Grid item xs={12} sm={8} key={article.id}>
-          <ArticleCard
-            title={article.title}
-            tags={article.tags}
-            createdAt={article.createdAt}
-            url={article.url}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <Container maxWidth='md'>
+      <Grid container spacing={2} maxWidth='100%'>
+        {articles.map((article) => (
+          <Grid item width='100%'>
+            <ArticleCard
+              key={article.id}
+              title={article.title}
+              tags={article.tags}
+              createdAt={article.createdAt}
+              url={article.url}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   )
 }
