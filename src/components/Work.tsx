@@ -9,7 +9,7 @@ import {
 
 export const Work = () => {
   return (
-    <Box mt={4}>
+    <Box>
       <Typography variant='h5' component='h2'>
         Work
       </Typography>

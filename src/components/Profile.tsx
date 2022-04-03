@@ -5,7 +5,7 @@ import { Avatar, Box, Link, Typography } from '@mui/material'
 
 export const Profile = () => {
   return (
-    <Box sx={{ display: 'flex' }} mt={4}>
+    <Box sx={{ display: 'flex' }}>
       <Avatar
         alt='kyntk'
         src='/static/images/icon.png'
