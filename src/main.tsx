@@ -1,12 +1,16 @@
 import { ThemeProvider } from '@mui/material'
-import { render } from 'preact'
-import { App } from './app'
+import viteSSR from 'vite-ssr/react'
+import { App } from './App'
 import { theme } from './lib/mui/theme'
+import { routes } from './routes'
 import './style/index.css'
 
-render(
+const WrappedApp = (props: any) => (
   <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
-  document.getElementById('app')!
+    <App {...props} />
+  </ThemeProvider>
 )
+
+export default viteSSR(WrappedApp, { routes }, ({ url, isClient, request }) => {
+  // Custom initialization hook
+})
