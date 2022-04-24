@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material'
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useState } from 'react'
 import { getUserPublicArticles } from '../lib/qiita/api'
 import { ArticleCard } from './ArticleCard'
 

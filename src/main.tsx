@@ -1,12 +1,14 @@
 import { ThemeProvider } from '@mui/material'
-import { render } from 'preact'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { App } from './app'
 import { theme } from './lib/mui/theme'
 import './style/index.css'
 
-render(
-  <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
-  document.getElementById('app')!
+ReactDOM.createRoot(document.getElementById('app')!).render(
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>
 )
